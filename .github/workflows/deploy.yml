@@ -17,7 +17,8 @@ jobs:
           script: |
             set -e
             trap 'echo "❌ Deployment failed!" && exit 1' ERR
-            nvm --version
+            export NVM_DIR="$HOME/.nvm"
+            source "$NVM_DIR/nvm.sh"
             cd /root/idg-devops-practice
             git reset --hard HEAD
             git checkout deploy

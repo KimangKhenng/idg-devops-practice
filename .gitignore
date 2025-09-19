@@ -14,3 +14,8 @@ node_modules
 #  Ignore CLI configuration files
  .terraformrc
  terraform.rc
+terraform/.terraform.lock.hcl
+
+terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/6.14.0/darwin_arm64/LICENSE.txt
+
+terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/6.14.0/darwin_arm64/terraform-provider-aws_v6.14.0_x5

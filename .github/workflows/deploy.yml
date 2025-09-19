@@ -15,6 +15,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            nvm --version
             cd /root/idg-devops-practice
+            git reset --hard HEAD
+            git checkout deploy
             git pull origin deploy
             pm2 reload index

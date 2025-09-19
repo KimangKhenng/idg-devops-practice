@@ -22,6 +22,7 @@ jobs:
             cd /root/idg-devops-practice
             git reset --hard HEAD
             git fetch origin
+            git branch
             git checkout deploy
             git pull origin deploy
             pm2 reload index

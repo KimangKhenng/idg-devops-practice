@@ -23,35 +23,11 @@ resource "aws_key_pair" "kimang_key_2" {
 }
 
 resource "aws_instance" "server_1" {
-  ami  = "ami-ff0fea8310f3"
+  ami  = "ami-df5de72bdb3b"
   instance_type = "t3.micro"
   count = 3
   key_name = aws_key_pair.kimang_key_2.key_name
   security_groups = [aws_security_group.sg_1.name]
-  user_data = <<-EOF
-              #!/bin/bash
-              apt update
-              apt install git -y
-              apt install curl -y
-              apt install neofetch -y
-
-              # Install NVM
-              curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-              . ~/.nvm/nvm.sh
-
-              # Install Node.js 18
-              nvm install 18
-
-              # Install PM2
-              npm install -g pm2
-
-              # Clone Node.js repository
-              git clone https://github.com/KimangKhenng/devops-ex /root/devops-ex
-
-              # Navigate to the repository and start the app with PM2
-              cd /root/devops-ex
-              npm install
-              pm2 start app.js --name node-app -- -p 8000
-            EOF
+  user_data = templatefile("${path.module}/user_data.sh", {})
   user_data_replace_on_change = true
 }

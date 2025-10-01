@@ -23,9 +23,9 @@ resource "aws_key_pair" "kimang_key_2" {
 }
 
 resource "aws_instance" "server_1" {
-  ami  = "ami-df5de72bdb3b"
+  ami  = "ami-000001"
   instance_type = "t3.micro"
-  count = 3
+  count = 1
   key_name = aws_key_pair.kimang_key_2.key_name
   security_groups = [aws_security_group.sg_1.name]
 }
